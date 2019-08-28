@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <externalId>false</externalId>
+    <label>Статус</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Анкета отправлена</fullName>
+                <default>false</default>
+                <label>Анкета отправлена</label>
+            </value>
+            <value>
+                <fullName>Анкета повторно отправлена</fullName>
+                <default>false</default>
+                <label>Анкета повторно отправлена</label>
+            </value>
+            <value>
+                <fullName>Анкета получена</fullName>
+                <default>false</default>
+                <label>Анкета получена</label>
+            </value>
+            <value>
+                <fullName>Анкета согласована</fullName>
+                <default>false</default>
+                <label>Анкета согласована</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

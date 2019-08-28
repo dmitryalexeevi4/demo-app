@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PosSystem__c</fullName>
+    <externalId>false</externalId>
+    <label>POS-система, на которой работает рестора</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>1C</fullName>
+                <default>false</default>
+                <label>1C</label>
+            </value>
+            <value>
+                <fullName>Арчи Делевери</fullName>
+                <default>false</default>
+                <label>Арчи Делевери</label>
+            </value>
+            <value>
+                <fullName>Нет кассовой системы</fullName>
+                <default>false</default>
+                <label>Нет кассовой системы</label>
+            </value>
+            <value>
+                <fullName>Рест Арт</fullName>
+                <default>false</default>
+                <label>Рест Арт</label>
+            </value>
+            <value>
+                <fullName>Самописная</fullName>
+                <default>false</default>
+                <label>Самописная</label>
+            </value>
+            <value>
+                <fullName>Трактир</fullName>
+                <default>false</default>
+                <label>Трактир</label>
+            </value>
+            <value>
+                <fullName>Эвотор</fullName>
+                <default>false</default>
+                <label>Эвотор</label>
+            </value>
+            <value>
+                <fullName>ArchiDelivery</fullName>
+                <default>false</default>
+                <label>ArchiDelivery</label>
+            </value>
+            <value>
+                <fullName>FastOperator</fullName>
+                <default>false</default>
+                <label>FastOperator</label>
+            </value>
+            <value>
+                <fullName>Frontol</fullName>
+                <default>false</default>
+                <label>Frontol</label>
+            </value>
+            <value>
+                <fullName>FrontPad</fullName>
+                <default>false</default>
+                <label>FrontPad</label>
+            </value>
+            <value>
+                <fullName>Fusion POS</fullName>
+                <default>false</default>
+                <label>Fusion POS</label>
+            </value>
+            <value>
+                <fullName>IIKO</fullName>
+                <default>false</default>
+                <label>IIKO</label>
+            </value>
+            <value>
+                <fullName>R-Keeper - 5</fullName>
+                <default>false</default>
+                <label>R-Keeper - 5</label>
+            </value>
+            <value>
+                <fullName>R-Keeper - 6</fullName>
+                <default>false</default>
+                <label>R-Keeper - 6</label>
+            </value>
+            <value>
+                <fullName>R-Keeper - 7</fullName>
+                <default>false</default>
+                <label>R-Keeper - 7</label>
+            </value>
+            <value>
+                <fullName>R-Keeper - 8</fullName>
+                <default>false</default>
+                <label>R-Keeper - 8</label>
+            </value>
+            <value>
+                <fullName>R-Keeper</fullName>
+                <default>false</default>
+                <label>R-Keeper</label>
+            </value>
+            <value>
+                <fullName>Smartomato</fullName>
+                <default>false</default>
+                <label>Smartomato</label>
+            </value>
+            <value>
+                <fullName>Другое</fullName>
+                <default>false</default>
+                <label>Другое</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

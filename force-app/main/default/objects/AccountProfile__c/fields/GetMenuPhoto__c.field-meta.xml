@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GetMenuPhoto__c</fullName>
+    <externalId>false</externalId>
+    <label>Способ передачи фото для меню</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Фото нет</fullName>
+                <default>false</default>
+                <label>Фото нет</label>
+            </value>
+            <value>
+                <fullName>Из файла</fullName>
+                <default>false</default>
+                <label>Из файла</label>
+            </value>
+            <value>
+                <fullName>По ссылке</fullName>
+                <default>false</default>
+                <label>По ссылке</label>
+            </value>
+            <value>
+                <fullName>Фотосъемка</fullName>
+                <default>false</default>
+                <label>Фотосъемка</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
