@@ -3,4 +3,150 @@
  -->
 
 <apex:page id="partner">
+    <apex:includeScript value="{!$Resource.jquery}"/>
+    <apex:includeScript value="{!$Resource.jqueryMask}"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/suggestions-jquery@19.8.0/dist/css/suggestions.min.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/suggestions-jquery@19.8.0/dist/js/jquery.suggestions.min.js"></script>
+
+    <form action="https://test.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+
+        <input type="hidden" name="oid" value="00D4E0000009jmv"/>
+        <input type="hidden" name="retURL" value="http://"/>
+
+        <style>
+            .fields {
+                font-family: Arial;
+                font-size: 14px;
+                display: flex;
+                justify-content: center; /*Центрирование по горизонтали*/
+                align-items: center; /*Центрирование по вертикали */
+            }
+
+            .checkbox {
+                font-family: Arial;
+                font-size: 14px;
+                display: flex;
+                justify-content: center; /*Центрирование по горизонтали*/
+                margin-right: 19%;
+            }
+
+            .agreement {
+                width: 400px;
+                font-size: 10px;
+                text-align: left;
+                white-space: nowrap;
+                margin-left: 37%;
+            }
+
+        </style>
+
+        <img src="https://java-innovation-4484-dev-ed--c.visualforce.com/resource/1568286705000/logo1" width="1380"
+             height="500"/>
+
+        <table class="fields">
+            <tr>
+                <td><label for="last_name">* Имя </label></td>
+                <td><input id="last_name" maxlength="80" name="last_name" size="25" type="text"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label for="phone">* Телефон </label></td>
+                <td><input id="phone" maxlength="40" name="phone" size="25" type="text"/></td>
+            </tr>
+
+            <tr>
+                <td><label for="email">* Электронная почта </label></td>
+                <td><input id="email" maxlength="80" name="email" size="25" type="text"/></td>
+            </tr>
+
+            <tr>
+                <td><label for="company">* Название ресторана </label></td>
+                <td><input id="company" maxlength="40" name="company" size="25" type="text"/></td>
+            </tr>
+
+            <tr>
+                <td><label for="city">* Город </label></td>
+                <td><input id="city" maxlength="40" name="city" size="25" type="text"/></td>
+            </tr>
+
+            <script>
+              $("#city").suggestions({
+                // Замените на свой API-ключ
+                token: "5392432e98b38dc80404b03560936f9bd154dfe3",
+                type: "ADDRESS",
+                hint: false,
+                bounds: "city",
+                constraints: {
+                  label: "",
+                  locations: { city_type_full: "город" }
+                },
+                onSelect: function(suggestion) {
+                  console.log(suggestion);
+                }
+              });
+            </script>
+
+            <tr>
+                <td>* Адрес (ул., дом) :</td>
+                <td><input id="00N4E000004VZoa" maxlength="255" name="00N4E000004VZoa" size="25" type="text"/></td>
+            </tr>
+
+            <tr>
+                <td><label for="url">Сайт ресторана </label></td>
+                <td><input id="url" maxlength="80" name="url" size="25" type="text"/></td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    <span style="font-size: 10px;">
+                    Если нет сайта, можете добавить ссылку на<br>
+                    страницу в социальной сети.</br>
+                    </span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Комментарии</td>
+                <td><textarea id="00N4E000004VZoc" maxlength="255" name="00N4E000004VZoc" size="25" type="text"/></td>
+            </tr>
+        </table>
+
+        <table class="checkbox">
+            <tr>
+                <td>*<input id="00N4E000004VZob" name="00N4E000004VZob" type="checkbox" value="1"/></td>
+                <td> Согласен</td>
+            </tr>
+        </table>
+
+        <table class="agreement">
+            <tr>
+                <td>
+                    <span>
+                        Я даю ООО "Яндекс" и ООО "Яндекс.Еда" согласие на обработку моих<br>
+                персональных данных в соответствии с Федеральным Законом от 27.07.2008 года</br>
+                        N152-ФЗ "О персональных данных" на условиях и для целей, определенных в этой<br>
+                заявке и в Политике конфиденциальности, -yandex.ru/legal/confidential-</br>
+                        ознакомление с которой я подтверждаю, в течение срока, необходимого для<br>
+                достижения указанных целей, и 5 лет после их достижения.</br>
+                    </span>
+                </td>
+            </tr>
+        </table>
+
+        <tr align="center">
+            <td>
+                <input type="submit" name="submit"
+                       style="width:120px; height:28px; border:1px solid lightgrey; background:#ffe033;"/>
+            </td>
+        </tr>
+
+        <tr align="center">
+            <td>© 2019 Яндекс</td>
+        </tr>
+    </form>
 </apex:page>
+
+
