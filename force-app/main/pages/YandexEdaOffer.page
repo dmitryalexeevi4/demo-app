@@ -6,7 +6,74 @@
     <apex:includeScript value="{!$Resource.jquery}"/>
     <apex:form>
 
-                <table class="offer_fields">
+        <img src="https://java-innovation-4484-dev-ed--c.visualforce.com/resource/1568286705000/logo2" width="1380"
+             height="500"/>
+
+        <table class="annotation" align="center">
+            <tr>
+                <td>
+                    <span>
+                        Для начала работы с сервисом, пожалуйста,<br>
+                        ознакомьтесь и согласитесь с условиями Оферты,</br>
+                        а также внесите реквизиты. Договор будет<br>
+                        считаться подписанным после оплаты платежного</br>
+                        поручения. Платежное поручение будет<br>
+                        отправлено на электронную почту после проверки</br>
+                        заполненной информации.<br></br>
+                    </span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <span>Оферта на оказание услуг "Яндекс.Еда"</span>
+                </td>
+            </tr>
+
+            <tr>
+                <th><span>Ознакомьтесь с коммерческими <br>
+                        условиями</br></span></th>
+            </tr>
+
+            <tr>
+                <td>
+                    <span>
+                        Стоимость Услуг "Яндекс.Еда" в отношении одного<br>
+                        оформленного Пользователем Заказа при выборе</br>
+                        Пользователем способа оплаты наличным<br>
+                        платежом в случае, если доставка Товара</br>
+                        осуществляется Доставщиком - 7.0% (в том числе<br>
+                        НДС) от общей стоимости Заказа</br>
+                    </span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <span>
+                        Стоимость Услуг "Яндекс.Еда" в отношении одного<br>
+                        оформленного Пользователем Заказа при выборе</br>
+                        Пользователем способа оплаты безналичным<br>
+                        платежом в случае, если доставка Товара</br>
+                        осуществляется Доставщиком - 19.0% (в том числе<br>
+                        НДС) от общей стоимости Заказа.</br>
+                     </span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <span style="font-size: 10px;">
+                        Стоимость Услуг "Яндекс.Еда", определяемая в соответствии с пп.<br>
+                        1.2 выше, включает вознаграждение за исполнение Поручения и</br>
+                        Поручительство в соответствии с Офертой.
+                    </span>
+                </td>
+            </tr>
+        </table>
+
+
+                <table class="offer_fields" align="center">
                     <thead>
                     <tr>
                         <th><span>Внесите реквизиты</span></th>
@@ -34,21 +101,21 @@
                             <table class="sub_fields">
                                 <tr>
                                     <td><apex:outputLabel value="Город" for="add_city"/></td>
-                                    <td><apex:inputText value="{!offer.City__c}" id="add_city"/></td>
+                                    <td><apex:outputLabel value="Индекс" for="add_index"/></td>
                                 </tr>
 
                                 <tr>
-                                    <td><apex:outputLabel value="Индекс" for="add_index"/></td>
+                                    <td><apex:inputText value="{!offer.City__c}" id="add_city"/></td>
                                     <td><apex:inputText size="8" value="{!offer.Index__c}" id="add_index"/></td>
                                 </tr>
 
                                 <tr>
                                     <td><apex:outputLabel value="Улица" for="add_street"/></td>
-                                    <td><apex:inputText value="{!offer.Street__c}" id="add_street"/></td>
+                                    <td><apex:outputLabel value="Дом, офис, кв." for="add_apartments"/></td>
                                 </tr>
 
                                 <tr>
-                                    <td><apex:outputLabel value="Дом, офис, кв." for="add_apartments"/></td>
+                                    <td><apex:inputText value="{!offer.Street__c}" id="add_street"/></td>
                                     <td><apex:inputText size="8" value="{!offer.Apartments__c}" id="add_apartments"/></td>
                                 </tr>
 
