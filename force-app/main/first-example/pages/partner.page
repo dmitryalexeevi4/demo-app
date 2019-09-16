@@ -8,11 +8,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/suggestions-jquery@19.8.0/dist/css/suggestions.min.css" rel="stylesheet"/>
     <script src="https://cdn.jsdelivr.net/npm/suggestions-jquery@19.8.0/dist/js/jquery.suggestions.min.js"></script>
+    <script src="https://java-innovation-4484-dev-ed--c.visualforce.com/resource/1568545129000/jqueryMask?"></script>
 
-    <form action="https://test.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST" id="myForm">
+    <form action="https://test.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
 
         <input type="hidden" name="oid" value="00D4E0000009jmv"/>
-        <input type="hidden" name="retURL" value="http://"/>
+        <input type="hidden" name="retURL" value="https://java-innovation-4484-dev-ed.lightning.force.com/apex/thanks"/>
 
         <style>
             .fields {
@@ -45,6 +46,79 @@
 
         </style>
 
+        <script>
+
+          $(document).ready(function() {
+
+            // Имя
+            $("input[name='last_name']").blur(function() {
+              var last_name = $("#last_name").val();
+              var filter = /^(?:[a-zA-Z\s]+)|(?:[а-яА-Я\s]+)$/;
+              if (!filter.test(last_name)) {
+                $(this).addClass("error");
+              } else {
+                $(this).removeClass("error");
+              }
+            });
+
+            // Телефон
+            $("input[name='phone']").blur(function() {
+              var phone = $("#phone").mask("+7 (999) 999-99-99").val();
+              var filter = /^[\d]{1}\ \([\d]{2,3}\)\ [\d]{2,3}-[\d]{2,3}-[\d]{2,3}$/;
+              if (!filter.test(phone)) {
+                $(this).addClass("error");
+              } else {
+                $(this).removeClass("error");
+              }
+            });
+
+            // Почта
+            $("input[name='email']").blur(function() {
+              var email = $("#email").val();
+              var filter = /^[a-z0-9_-]+@+[a-z0-9-]+\.[a-z]{2,6}$/i;
+              if (!filter.test(email)) {
+                $(this).addClass("error");
+              } else {
+                $(this).removeClass("error");
+              }
+            });
+
+            // Название ресторана
+            $("input[name='company']").blur(function() {
+              var company = $("#company").val();
+              var filter = /^(?:[a-zA-Z\s]+)|(?:[а-яА-Я\s]+)$/;
+              if (!filter.test(company)) {
+                $(this).addClass("error");
+              } else {
+                $(this).removeClass("error");
+              }
+            });
+
+            // Город
+            $("input[name='city']").blur(function() {
+              var city = $("#city").val();
+              var filter = /^(?:[a-zA-Z\s]+)|(?:[а-яА-Я\s]+)$/;
+              if (!filter.test(city)) {
+                $(this).addClass("error");
+              } else {
+                $(this).removeClass("error");
+              }
+            });
+
+            // Адрес
+            $("input[name='00N4E000004VZoa']").blur(function() {
+              var address = $("#00N4E000004VZoa").val();
+              var filter = /^(?:[a-zA-Z\s]+)|(?:[а-яА-Я\s]+)$/;
+              if (!filter.test(address)) {
+                $(this).addClass("error");
+              } else {
+                $(this).removeClass("error");
+              }
+            });
+          });
+
+        </script>
+
         <img src="https://java-innovation-4484-dev-ed--c.visualforce.com/resource/1568286705000/logo1" width="1380"
              height="500"/>
 
@@ -76,6 +150,7 @@
             </tr>
 
             <script>
+
               $("#city").suggestions({
                 // Замените на свой API-ключ
                 token: "5392432e98b38dc80404b03560936f9bd154dfe3",
@@ -91,22 +166,13 @@
                 }
               });
 
-
-              $(document).ready(function(){
-                $('#myForm input[required="req"]').blur(function(){
-                  if(!$(this).val()){
-                    $(this).addClass("error");
-                  } else{
-                    $(this).removeClass("error");
-                  }
-                });
-              });
-
             </script>
+
 
             <tr>
                 <td>* Адрес (ул., дом) :</td>
-                <td><input id="00N4E000004VZoa" maxlength="255" name="00N4E000004VZoa" size="25" type="text" required="req"/></td>
+                <td><input id="00N4E000004VZoa" maxlength="255" name="00N4E000004VZoa" size="25" type="text"
+                           required="req"/></td>
             </tr>
 
             <tr>
