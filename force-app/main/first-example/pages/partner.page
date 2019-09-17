@@ -29,7 +29,7 @@
                 font-size: 14px;
                 display: flex;
                 justify-content: center; /*Центрирование по горизонтали*/
-                margin-right: 19%;
+                margin-right: 22%;
             }
 
             .agreement {
@@ -37,7 +37,7 @@
                 font-size: 10px;
                 text-align: left;
                 white-space: nowrap;
-                margin-left: 37%;
+                margin-left: 35.3%;
             }
 
             .error {
@@ -45,6 +45,48 @@
             }
 
         </style>
+
+
+        <script>
+          function message() {
+            var i = 0;
+            if ($('input[name="last_name"]').val() == "") {
+//alert("Укажите своё имя");
+              document.getElementById("message").innerHTML = "Укажите своё имя";
+              i++;
+            }
+            if ($('input[name="phone"]').val() == "") {
+//alert("Укажите телефон");
+              document.getElementById("message").innerHTML = "Укажите телефон";
+              i++;
+            }
+            if ($('input[name="email"]').val() == "") {
+//alert("Укажите e-mail");
+              document.getElementById("message").innerHTML = "Укажите e-mail";
+              i++;
+            }
+            if ($('input[name="city"]').val() == "") {
+//alert("Укажите город");
+              document.getElementById("message").innerHTML = "Укажите город";
+              i++;
+            }
+            if ($('input[name="00N4E000004VZoa"]').val() == "") {
+//alert("Укажите адрес");
+              document.getElementById("message").innerHTML = "Укажите адрес";
+              i++;
+            }
+            if ($('input[name="00N4E000004VZob"]').val() == false) {
+//alert("Требуется согласие на обработку персональных данных");
+              document.getElementById("message").innerHTML = "Согласие с условиями?";
+              i--;
+            }
+            if (i > 1) {
+              document.getElementById("message").innerHTML = "Заполните обязательные поля";
+            }
+            return i == 0;
+          }
+        </script>
+
 
         <script>
 
@@ -62,9 +104,11 @@
             });
 
             // Телефон
+            $("#phone").mask("+7 (999) 999-99-99");
+
             $("input[name='phone']").blur(function() {
-              var phone = $("#phone").mask("+7 (999) 999-99-99").val();
-              var filter = /^[\d]{1}\ \([\d]{2,3}\)\ [\d]{2,3}-[\d]{2,3}-[\d]{2,3}$/;
+              var phone = $("#phone").val();
+              var filter = /^+[\d]{1}\ \([\d]{2,3}\)\ [\d]{2,3}-[\d]{2,3}-[\d]{2,3}$/;
               if (!filter.test(phone)) {
                 $(this).addClass("error");
               } else {
@@ -108,7 +152,7 @@
             // Адрес
             $("input[name='00N4E000004VZoa']").blur(function() {
               var address = $("#00N4E000004VZoa").val();
-              var filter = /^(?:[a-zA-Z\s]+)|(?:[а-яА-Я\s]+)$/;
+              var filter = /^(?:[а-яА-Я\s]+)$/;
               if (!filter.test(address)) {
                 $(this).addClass("error");
               } else {
@@ -122,38 +166,47 @@
         <img src="https://java-innovation-4484-dev-ed--c.visualforce.com/resource/1568286705000/logo1" width="1380"
              height="500"/>
 
+
         <table class="fields">
             <tr>
+                <td align="center" colspan="4">
+                    <div id="message" style="width:400px; font-size:12px; color:#ff0000; align:center;">
+                        &nbsp;
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
                 <td><label for="last_name">* Имя </label></td>
-                <td><input id="last_name" maxlength="80" name="last_name" size="25" type="text" required="req"/>
+                <td><input id="last_name" maxlength="80" name="last_name" size="25" type="text"/>
                 </td>
             </tr>
 
             <tr>
                 <td><label for="phone">* Телефон </label></td>
-                <td><input id="phone" maxlength="40" name="phone" size="25" type="text" required="req"/></td>
+                <td><input id="phone" maxlength="40" name="phone" size="25" type="text"/></td>
             </tr>
 
             <tr>
                 <td><label for="email">* Электронная почта </label></td>
-                <td><input id="email" maxlength="80" name="email" size="25" type="text" required="req"/></td>
+                <td><input id="email" maxlength="80" name="email" size="25" type="text"/></td>
             </tr>
 
             <tr>
                 <td><label for="company">* Название ресторана </label></td>
-                <td><input id="company" maxlength="40" name="company" size="25" type="text" required="req"/></td>
+                <td><input id="company" maxlength="40" name="company" size="25" type="text"/></td>
             </tr>
 
             <tr>
                 <td><label for="city">* Город </label></td>
-                <td><input id="city" maxlength="40" name="city" size="25" type="text" required="req"/></td>
+                <td><input id="city" maxlength="40" name="city" size="25" type="text"/></td>
             </tr>
 
             <script>
 
               $("#city").suggestions({
                 // Замените на свой API-ключ
-                token: "5392432e98b38dc80404b03560936f9bd154dfe3",
+                token: "da8497f9ba5361d4e80a8c72458d732875c0a0fc",
                 type: "ADDRESS",
                 hint: false,
                 bounds: "city",
@@ -171,8 +224,7 @@
 
             <tr>
                 <td>* Адрес (ул., дом) :</td>
-                <td><input id="00N4E000004VZoa" maxlength="255" name="00N4E000004VZoa" size="25" type="text"
-                           required="req"/></td>
+                <td><input id="00N4E000004VZoa" maxlength="255" name="00N4E000004VZoa" size="25" type="text"/></td>
             </tr>
 
             <tr>
@@ -198,7 +250,7 @@
 
         <table class="checkbox">
             <tr>
-                <td>*<input id="00N4E000004VZob" name="00N4E000004VZob" type="checkbox" value="1" required="req"/></td>
+                <td>*<input id="00N4E000004VZob" name="00N4E000004VZob" type="checkbox" value="1" required="required"/></td>
                 <td> Согласен</td>
             </tr>
         </table>
@@ -220,7 +272,7 @@
 
         <tr align="center">
             <td>
-                <input type="submit" name="submit"
+                <input type="submit" name="submit" onclick="return(message())"
                        style="width:120px; height:28px; border:1px solid lightgrey; background:#ffe033;"/>
             </td>
         </tr>

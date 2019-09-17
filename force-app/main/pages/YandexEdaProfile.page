@@ -3,4 +3,6 @@
  -->
 
 <apex:page id="YandexEdaProfile">
+    <img src="https://java-innovation-4484-dev-ed--c.visualforce.com/resource/1568286705000/logo3" width="1380"
+         height="500"/>
 </apex:page>
