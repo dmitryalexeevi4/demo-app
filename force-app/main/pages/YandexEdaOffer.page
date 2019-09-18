@@ -16,6 +16,49 @@
         }
     </style>
 
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('#myForm input[type="text"]').blur(function(){
+          if(!$(this).val()){
+            $(this).addClass("error");
+          } else{
+            $(this).removeClass("error");
+          }
+        });
+        
+        $("input[id*=OrgINN]").suggestions({
+          token: "da8497f9ba5361d4e80a8c72458d732875c0a0fc",
+          type: "PARTY",
+          onSelect: function(suggestion) {
+            var data = suggestion.data;
+            console.log(data);
+            $("input[id*=add_city]").val(data.address.data.city);
+            $("input[id*=add_index]").val(data.address.data.postal_code);
+            $("input[id*=add_street]").val(data.address.data.street_with_type);
+            $("input[id*=add_apartments]").val(data.address.data.house);
+            $("input[id*=AccountFullName]").val(data.name.full);
+            $("input[id*=OGRN]").val(data.ogrn);
+            $("input[id*=INN]").val(data.inn);
+            $("input[id*=KPP]").val(data.kpp);
+            $("input[id*=SignerName]").val(data.management.name);
+            $("input[id*=SignerPosition]").val(data.management.post);
+          }
+        });
+
+        $("input[id*=BankName]").suggestions({
+          token: "da8497f9ba5361d4e80a8c72458d732875c0a0fc",
+          type: "BANK",
+          onSelect: function(suggestion) {
+            var data = suggestion.data;
+            console.log(data);
+            $("input[id*=BIK]").val(data.bic);
+            $("input[id*=CorAcc]").val(data.correspondent_account);
+          }
+        });
+      });
+      </script>
+
+
     <apex:form>
         <img src="https://java-innovation-4484-dev-ed--c.visualforce.com/resource/1568286705000/logo2" width="1380"
              height="500"/>
@@ -97,12 +140,12 @@
 
             <tr>
                 <td><apex:outputLabel for="OrgINN" value="Название предприятия или ИНН"/></td>
-                <td><inputext id="OrgINN" size="30" value="{!offer.OrgINN__c}"/></td>
+                <td><apex:inputText id="OrgINN" size="30" value="{!offer.OrgINN__c}"/></td>
             </tr>
 
             <tr>
                 <td><apex:outputLabel for="AccountFullName" value="Полное название предприятия"/></td>
-                <td><apex:inputText id="AccountFullName" size="30" value="{!offer.AccountFullName__c}"/></td>
+                <td><apex:inputText id="AccountFullName" disabled="true" size="30" value="{!offer.AccountFullName__c}"/></td>
             </tr>
 
             <tr>
@@ -115,8 +158,8 @@
                         </tr>
 
                         <tr>
-                            <td><apex:inputText size="20" value="{!offer.City__c}" id="add_city"/></td>
-                            <td><apex:inputText size="12" value="{!offer.Index__c}" id="add_index"/></td>
+                            <td><apex:inputText disabled="true" size="20" value="{!offer.City__c}" id="add_city"/></td>
+                            <td><apex:inputText disabled="true" size="12" value="{!offer.Index__c}" id="add_index"/></td>
                         </tr>
 
                         <tr>
@@ -125,8 +168,8 @@
                         </tr>
 
                         <tr>
-                            <td><apex:inputText size="20" value="{!offer.Street__c}" id="add_street"/></td>
-                            <td><apex:inputText size="12" value="{!offer.Apartments__c}" id="add_apartments"/></td>
+                            <td><apex:inputText disabled="true" size="20" value="{!offer.Street__c}" id="add_street"/></td>
+                            <td><apex:inputText disabled="true" size="12" value="{!offer.Apartments__c}" id="add_apartments"/></td>
                         </tr>
 
                     </table>
@@ -135,17 +178,17 @@
 
             <tr>
                 <td><apex:outputLabel for="OGRN" value="Полное название предприятия"/></td>
-                <td><apex:inputText id="OGRN" size="30" value="{!offer.OGRN__c}"/></td>
+                <td><apex:inputText id="OGRN" disabled="true" size="30" value="{!offer.OGRN__c}"/></td>
             </tr>
 
             <tr>
                 <td><apex:outputLabel for="INN" value="ИНН"/></td>
-                <td><apex:inputText id="INN" size="30" value="{!offer.INN__c}"/></td>
+                <td><apex:inputText id="INN" disabled="true" size="30" value="{!offer.INN__c}"/></td>
             </tr>
 
             <tr>
                 <td><apex:outputLabel for="KPP" value="КПП"/></td>
-                <td><apex:inputText id="KPP" size="30" value="{!offer.KPP__c}"/></td>
+                <td><apex:inputText id="KPP" disabled="true" size="30" value="{!offer.KPP__c}"/></td>
             </tr>
 
             <tr>
@@ -156,7 +199,7 @@
             </tr>
 
             <tr>
-                <td><apex:outputLabel for="BankName" value="Название Банка"/></td>
+                <td><apex:outputLabel for="BankName" value="Название банка"/></td>
                 <td><apex:inputText id="BankName" size="30" value="{!offer.BankName__c}"/></td>
             </tr>
 
@@ -174,12 +217,12 @@
 
             <tr>
                 <td><apex:outputLabel for="BIK" value="БИК банка"/></td>
-                <td><apex:inputText id="BIK" size="30" value="{!offer.BankBIK__c}"/></td>
+                <td><apex:inputText id="BIK" disabled="true" size="30" value="{!offer.BankBIK__c}"/></td>
             </tr>
 
             <tr>
                 <td><apex:outputLabel for="CorAcc" value="Кор. счет"/></td>
-                <td><apex:inputText id="CorAcc" size="30" value="{!offer.CorAcc__c}"/></td>
+                <td><apex:inputText id="CorAcc" disabled="true" size="30" value="{!offer.CorAcc__c}"/></td>
             </tr>
 
             <tr>
@@ -219,12 +262,12 @@
 
             <tr>
                 <td><apex:outputLabel for="SignerName" value="Имя подписанта в именительном падеже"/></td>
-                <td><apex:inputText id="SignerName" size="30" value="{!offer.SignerName__c}"/></td>
+                <td><apex:inputText id="SignerName" disabled="true" size="30" value="{!offer.SignerName__c}"/></td>
             </tr>
 
             <tr>
                 <td><apex:outputLabel for="SignerPosition" value="Должность подписанта"/></td>
-                <td><apex:inputText id="SignerPosition" size="30" value="{!offer.SignerPosition__c}"/></td>
+                <td><apex:inputText id="SignerPosition" disabled="true" size="30" value="{!offer.SignerPosition__c}"/></td>
             </tr>
         </table>
 
