@@ -150,6 +150,9 @@
 
             <tr>
                 <td><apex:outputLabel for="NDS" value="Применяемая ставка НДС"/></td>
+                <td><apex:selectRadio layout="pageDirection" value="{!offer.NDS__c}">
+                        <apex:selectoptions value="{!types}"></apex:selectoptions>
+                    </apex:selectRadio></td>
             </tr>
 
             <tr>
