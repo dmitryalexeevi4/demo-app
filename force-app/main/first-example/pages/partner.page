@@ -204,9 +204,10 @@
 
             <script>
 
-              $("#city").suggestions({
+                $("#city").suggestions({
                 // Замените на свой API-ключ
-                token: "da8497f9ba5361d4e80a8c72458d732875c0a0fc",
+                token: "da8497f9ba5361d4e8" +
+                  "0a8c72458d732875c0a0fc",
                 type: "ADDRESS",
                 hint: false,
                 bounds: "city",

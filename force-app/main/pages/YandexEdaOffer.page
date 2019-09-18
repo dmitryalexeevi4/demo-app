@@ -16,16 +16,9 @@
         }
     </style>
 
-    <script type="text/javascript">
+    <script>
       $(document).ready(function(){
-        $('#myForm input[type="text"]').blur(function(){
-          if(!$(this).val()){
-            $(this).addClass("error");
-          } else{
-            $(this).removeClass("error");
-          }
-        });
-        
+
         $("input[id*=OrgINN]").suggestions({
           token: "da8497f9ba5361d4e80a8c72458d732875c0a0fc",
           type: "PARTY",
@@ -55,7 +48,25 @@
             $("input[id*=CorAcc]").val(data.correspondent_account);
           }
         });
+
+        $("[id*=CoincidesLegal]").click(function() {
+          if  ($("[id*=CoincidesLegal]").prop("checked") === true) {
+            $("input[id*=BillingCity]").val($("input[id*=add_city]").val());
+            $("input[id*=BillingIndex]").val($("input[id*=add_index]").val());
+            $("input[id*=BillingAddress]").val(
+              $("input[id*=add_street]").val() + ", " +
+              $("input[id*=add_apartments]").val()
+            );
+          }else{
+            if  ($("[id*=CoincidesLegal]").prop("checked") === false) {
+              $("input[id*=BillingCity]").val("").val();
+              $("input[id*=BillingIndex]").val("").val();
+              $("input[id*=BillingAddress]").val("");
+            }
+          }
+        });
       });
+
       </script>
 
 
@@ -127,6 +138,7 @@
         </table>
 
         <table class="offer_fields" align="center">
+
             <thead>
             <tr>
                 <th><span>Внесите реквизиты</span></th>
@@ -135,7 +147,7 @@
 
             <tr>
                 <td><apex:outputLabel for="RestName" value="Название ресторана"/></td>
-                <td><apex:inputText value="{!offer.RestName__c}" size="30" id="RestName"/></td>
+                <td><apex:inputText id="RestName" size="30" value="{!offer.RestName__c}"/></td>
             </tr>
 
             <tr>
@@ -242,7 +254,7 @@
 
             <tr>
                 <td><apex:outputLabel for="CoincidesLegal" value="Адрес для корреспонденции"/></td>
-                <td><apex:inputCheckbox value="{!offer.CoincidesLegal__c}"/></td>
+                <td><apex:inputCheckbox id="CoincidesLegal" value="{!offer.CoincidesLegal__c}"/></td>
             </tr>
 
             <tr>
@@ -276,7 +288,10 @@
         </div>
 
         <div align="center">
-        <button align="center" id="submit" type="submit"  style="width:120px; height:28px; border:1px solid lightgrey; background:#ffe033;">Отправить</button>
+                <td>
+                    <input type="submit" name="Отправить"
+                           style="width:120px; height:28px; border:1px solid lightgrey; background:#ffe033;"/>
+                </td>
         </div>
 
         <div align="center">
