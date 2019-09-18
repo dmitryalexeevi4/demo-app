@@ -96,8 +96,8 @@
             </tr>
 
             <tr>
-                <td> Название предприятия или ИНН</td>
-                <td><input maxlength="80" size="30" type="text"/></td>
+                <td><apex:outputLabel for="OrgINN" value="Название предприятия или ИНН"/></td>
+                <td><inputext id="OrgINN" size="30" value="{!offer.OrgINN__c}"/></td>
             </tr>
 
             <tr>
