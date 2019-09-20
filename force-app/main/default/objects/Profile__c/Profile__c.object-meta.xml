@@ -52,7 +52,7 @@
     <enableSearch>false</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <label>Profile</label>
+    <label>Анкета</label>
     <nameField>
         <label>Profile Name</label>
         <type>Text</type>

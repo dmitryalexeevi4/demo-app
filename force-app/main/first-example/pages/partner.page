@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/suggestions-jquery@19.8.0/dist/js/jquery.suggestions.min.js"></script>
     <script src="https://java-innovation-4484-dev-ed--c.visualforce.com/resource/1568545129000/jqueryMask?"></script>
 
-    <form action="https://test.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+    <form action="https://test.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST" onsubmit="return validation()">
 
         <input type="hidden" name="oid" value="00D4E0000009jmv"/>
         <input type="hidden" name="retURL" value="https://java-innovation-4484-dev-ed.lightning.force.com/apex/thanks"/>
@@ -46,136 +46,82 @@
 
         </style>
 
-
-        <script>
-          function message() {
-            var i = 0;
-            if ($('input[name="last_name"]').val() == "") {
-//alert("Укажите своё имя");
-              document.getElementById("message").innerHTML = "Укажите своё имя";
-              i++;
-            }
-            if ($('input[name="phone"]').val() == "") {
-//alert("Укажите телефон");
-              document.getElementById("message").innerHTML = "Укажите телефон";
-              i++;
-            }
-            if ($('input[name="email"]').val() == "") {
-//alert("Укажите e-mail");
-              document.getElementById("message").innerHTML = "Укажите e-mail";
-              i++;
-            }
-            if ($('input[name="city"]').val() == "") {
-//alert("Укажите город");
-              document.getElementById("message").innerHTML = "Укажите город";
-              i++;
-            }
-            if ($('input[name="00N4E000004VZoa"]').val() == "") {
-//alert("Укажите адрес");
-              document.getElementById("message").innerHTML = "Укажите адрес";
-              i++;
-            }
-            if ($('input[name="00N4E000004VZob"]').val() == false) {
-//alert("Требуется согласие на обработку персональных данных");
-              document.getElementById("message").innerHTML = "Согласие с условиями?";
-              i--;
-            }
-            if (i > 1) {
-              document.getElementById("message").innerHTML = "Заполните обязательные поля";
-            }
-            return i == 0;
-          }
-        </script>
-
-
         <script>
 
-          $(document).ready(function() {
-
-            // Имя
-            $("input[name='last_name']").blur(function() {
-              var last_name = $("#last_name").val();
-              var filter = /^(?:[a-zA-Z\s]+)|(?:[а-яА-Я\s]+)$/;
-              if (!filter.test(last_name)) {
-                $(this).addClass("error");
-              } else {
-                $(this).removeClass("error");
+          function validation() {
+            emptyField = false;
+            var inputs = $("#last_name, #phone, #email, #company, #city, #00N4E000004VZoa");
+            $.each(inputs, function(index, value) {
+              if (value.value === ''){
+                value.style.borderColor = 'red';
+                emptyField = true;
               }
             });
+
+           if (emptyField) {
+             document.getElementById('message').innerHTML = 'Заполните обязательные поля';
+             return false;
+           }
+
+            // Имя
+              var last_name = $("#last_name").val();
+              var nameFilter = /^(?:[a-zA-Z\s]+)|(?:[а-яА-Я\s]+)$/;
+              if (!nameFilter.test(last_name)) {
+                $("#message").text('Указано некорректное имя');
+                return false;
+              }
 
             // Телефон
             $("#phone").mask("+7 (999) 999-99-99");
 
-            $("input[name='phone']").blur(function() {
               var phone = $("#phone").val();
-              var filter = /^+[\d]{1}\ \([\d]{2,3}\)\ [\d]{2,3}-[\d]{2,3}-[\d]{2,3}$/;
-              if (!filter.test(phone)) {
-                $(this).addClass("error");
-              } else {
-                $(this).removeClass("error");
+              var phoneFilter = /^+[\d]{1}\ \([\d]{2,3}\)\ [\d]{2,3}-[\d]{2,3}-[\d]{2,3}$/;
+              if (!phoneFilter.test(phone)) {
+                $("#message").text('Указан некорректный номер телефона');
+                return false;
               }
-            });
 
             // Почта
-            $("input[name='email']").blur(function() {
               var email = $("#email").val();
-              var filter = /^[a-z0-9_-]+@+[a-z0-9-]+\.[a-z]{2,6}$/i;
-              if (!filter.test(email)) {
-                $(this).addClass("error");
-              } else {
-                $(this).removeClass("error");
+              var emailFilter = /^[a-z0-9_-]+@+[a-z0-9-]+\.[a-z]{2,6}$/i;
+              if (!emailFilter.test(email)) {
+                $("#message").text('Указан некорректный адрес электронной почты');
+                return false;
               }
-            });
 
             // Название ресторана
-            $("input[name='company']").blur(function() {
               var company = $("#company").val();
-              var filter = /^(?:[a-zA-Z\s]+)|(?:[а-яА-Я\s]+)$/;
-              if (!filter.test(company)) {
-                $(this).addClass("error");
-              } else {
-                $(this).removeClass("error");
+              var companyFilter = /^(?:[a-zA-Z\s]+)|(?:[а-яА-Я\s]+)$/;
+              if (!companyFilter.test(company)) {
+                $("#message").text('Указан некорректный адрес электронной почты');
+                return false;
               }
-            });
 
             // Город
-            $("input[name='city']").blur(function() {
               var city = $("#city").val();
-              var filter = /^(?:[a-zA-Z\s]+)|(?:[а-яА-Я\s]+)$/;
-              if (!filter.test(city)) {
-                $(this).addClass("error");
-              } else {
-                $(this).removeClass("error");
+              var cityFilter = /^(?:[a-zA-Z\s]+)|(?:[а-яА-Я\s]+)$/;
+              if (!cityFilter.test(city)) {
+                $("#message").text('Выберите город');
+                return false;
               }
-            });
 
             // Адрес
-            $("input[name='00N4E000004VZoa']").blur(function() {
               var address = $("#00N4E000004VZoa").val();
-              var filter = /^(?:[а-яА-Я\s]+)$/;
-              if (!filter.test(address)) {
-                $(this).addClass("error");
-              } else {
-                $(this).removeClass("error");
+              var addressFilter = /^(?:[а-яА-Я\s]+)$/;
+              if (!addressFilter.test(address)) {
+                $("#message").text('Указан некорректный адрес');
+                return false;
               }
-            });
-          });
+          }
 
         </script>
 
         <img src="https://java-innovation-4484-dev-ed--c.visualforce.com/resource/1568286705000/logo1" width="1380"
              height="500"/>
 
+        <div id="message" style="color: #ff0000; text-align: center">&nbsp;</div>
 
         <table class="fields">
-            <tr>
-                <td align="center" colspan="4">
-                    <div id="message" style="width:400px; font-size:12px; color:#ff0000; align:center;">
-                        &nbsp;
-                    </div>
-                </td>
-            </tr>
-
             <tr>
                 <td><label for="last_name">* Имя </label></td>
                 <td><input id="last_name" maxlength="80" name="last_name" size="25" type="text"/>
@@ -273,7 +219,7 @@
 
         <tr align="center">
             <td>
-                <input type="submit" name="submit" onclick="return(message())"
+                <input type="submit" name="submit" onclick="validation()"
                        style="width:120px; height:28px; border:1px solid lightgrey; background:#ffe033;"/>
             </td>
         </tr>

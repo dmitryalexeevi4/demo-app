@@ -2,7 +2,7 @@
  - Created by user on 12.09.2019.
  -->
 
-<apex:page id="YandexEdaOffer" controller="YandexEdaOfferController">
+<apex:page id="YandexEdaOffer" controller="YandexEdaOfferController" docType="html-5.0">
     <apex:includeScript value="{!$Resource.jquery}"/>
     <apex:includeScript value="{!$Resource.jqueryMask}"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -147,17 +147,17 @@
 
             <tr>
                 <td><apex:outputLabel for="RestName" value="Название ресторана"/></td>
-                <td><apex:inputText id="RestName" size="30" value="{!offer.RestName__c}"/></td>
+                <td><apex:input id="RestName" size="30" value="{!RestName}"/></td>
             </tr>
 
             <tr>
                 <td><apex:outputLabel for="OrgINN" value="Название предприятия или ИНН"/></td>
-                <td><apex:inputText id="OrgINN" size="30" value="{!offer.OrgINN__c}"/></td>
+                <td><apex:input id="OrgINN" size="30"/></td>
             </tr>
 
             <tr>
                 <td><apex:outputLabel for="AccountFullName" value="Полное название предприятия"/></td>
-                <td><apex:inputText id="AccountFullName" disabled="true" size="30" value="{!offer.AccountFullName__c}"/></td>
+                <td><apex:input id="AccountFullName" size="30" value="{!AccountFullName}"/></td>
             </tr>
 
             <tr>
@@ -165,23 +165,23 @@
                 <td>
                     <table class="sub_fields">
                         <tr>
-                            <td><apex:outputLabel value="Город" for="add_city"/></td>
-                            <td><apex:outputLabel value="Индекс" for="add_index"/></td>
+                            <td><apex:outputLabel for="add_city" value="Город" /></td>
+                            <td><apex:outputLabel for="add_index" value="Индекс" /></td>
                         </tr>
 
                         <tr>
-                            <td><apex:inputText disabled="true" size="20" value="{!offer.City__c}" id="add_city"/></td>
-                            <td><apex:inputText disabled="true" size="12" value="{!offer.Index__c}" id="add_index"/></td>
+                            <td><apex:input id="add_city" size="20" value="{!City}"/></td>
+                            <td><apex:input id="add_index" size="12" value="{!Index}"/></td>
                         </tr>
 
                         <tr>
-                            <td><apex:outputLabel value="Улица" for="add_street"/></td>
-                            <td><apex:outputLabel value="Дом, офис, кв." for="add_apartments"/></td>
+                            <td><apex:outputLabel for="add_street" value="Улица"/></td>
+                            <td><apex:outputLabel for="add_apartments" value="Дом, офис, кв."/></td>
                         </tr>
 
                         <tr>
-                            <td><apex:inputText disabled="true" size="20" value="{!offer.Street__c}" id="add_street"/></td>
-                            <td><apex:inputText disabled="true" size="12" value="{!offer.Apartments__c}" id="add_apartments"/></td>
+                            <td><apex:input id="add_street" size="20" value="{!Street}" /></td>
+                            <td><apex:input id="add_apartments" size="12" value="{!Apartments}" /></td>
                         </tr>
 
                     </table>
@@ -190,34 +190,34 @@
 
             <tr>
                 <td><apex:outputLabel for="OGRN" value="Полное название предприятия"/></td>
-                <td><apex:inputText id="OGRN" disabled="true" size="30" value="{!offer.OGRN__c}"/></td>
+                <td><apex:input id="OGRN" size="30" value="{!OGRN}"/></td>
             </tr>
 
             <tr>
                 <td><apex:outputLabel for="INN" value="ИНН"/></td>
-                <td><apex:inputText id="INN" disabled="true" size="30" value="{!offer.INN__c}"/></td>
+                <td><apex:input id="INN" size="30" value="{!INN}"/></td>
             </tr>
 
             <tr>
                 <td><apex:outputLabel for="KPP" value="КПП"/></td>
-                <td><apex:inputText id="KPP" disabled="true" size="30" value="{!offer.KPP__c}"/></td>
+                <td><apex:input id="KPP" size="30" value="{!KPP}"/></td>
             </tr>
 
             <tr>
                 <td><apex:outputLabel for="NDS" value="Применяемая ставка НДС"/></td>
-                <td><apex:selectRadio layout="pageDirection" value="{!offer.NDS__c}">
+                <td><apex:selectRadio layout="pageDirection" value="{!NDS}">
                         <apex:selectoptions value="{!types}"></apex:selectoptions>
                     </apex:selectRadio></td>
             </tr>
 
             <tr>
                 <td><apex:outputLabel for="BankName" value="Название банка"/></td>
-                <td><apex:inputText id="BankName" size="30" value="{!offer.BankName__c}"/></td>
+                <td><apex:input id="BankName" size="30" value="{!BankName}"/></td>
             </tr>
 
             <tr>
                 <td><apex:outputLabel for="CheckingAcc" value="Расчетный счет"/></td>
-                <td><apex:inputText id="CheckingAcc" size="30" value="{!offer.CheckingAcc__c}"/>
+                <td><apex:input id="CheckingAcc" size="30" value="{!CheckingAcc}"/>
                     <span style="font-size: 10px;"> 20 цифр</span></td>
             </tr>
 
@@ -229,73 +229,69 @@
 
             <tr>
                 <td><apex:outputLabel for="BIK" value="БИК банка"/></td>
-                <td><apex:inputText id="BIK" disabled="true" size="30" value="{!offer.BankBIK__c}"/></td>
+                <td><apex:input id="BIK" size="30" value="{!BankBIK}"/></td>
             </tr>
 
             <tr>
                 <td><apex:outputLabel for="CorAcc" value="Кор. счет"/></td>
-                <td><apex:inputText id="CorAcc" disabled="true" size="30" value="{!offer.CorAcc__c}"/></td>
+                <td><apex:input id="CorAcc" size="30" value="{!CorAcc}"/></td>
             </tr>
 
             <tr>
                 <td><apex:outputLabel for="Accounting_Phone" value="Телефон бухгалтерии"/></td>
-                <td><apex:inputText id="Accounting_Phone" size="30" value="{!offer.Accounting_Phone__c}"/></td>
+                <td><apex:input id="Accounting_Phone" size="30" value="{!Accounting_Phone}"/></td>
             </tr>
 
             <tr>
                 <td><apex:outputLabel for="AccountingEmail" value="Электронная почта бухгалтерии"/></td>
-                <td><apex:inputText id="AccountingEmail" size="30" value="{!offer.AccountingEmail__c}"/></td>
+                <td><apex:input id="AccountingEmail" size="30" value="{!AccountingEmail}"/></td>
             </tr>
 
             <tr>
                 <td><apex:outputLabel for="Website" value="Сайт ресторана"/></td>
-                <td><apex:inputText id="Website" size="30" value="{!offer.Website__c}"/></td>
+                <td><apex:input id="Website" size="30" value="{!Website}"/></td>
             </tr>
 
             <tr>
                 <td><apex:outputLabel for="CoincidesLegal" value="Адрес для корреспонденции"/></td>
-                <td><apex:inputCheckbox id="CoincidesLegal" value="{!offer.CoincidesLegal__c}"/></td>
+                <td><apex:inputCheckbox id="CoincidesLegal" value="{!offer.CoincidesLegal__c}"/>Совпадает с юридическим</td>
             </tr>
 
             <tr>
                 <td><apex:outputLabel for="BillingIndex" value="Индекс"/></td>
-                <td><apex:inputText id="BillingIndex" size="30" value="{!offer.BillingIndex__c}"/></td>
+                <td><apex:input id ="BillingIndex" size="30" value="{!BillingIndexStr}"/></td>
             </tr>
 
             <tr>
                 <td><apex:outputLabel for="BillingCity" value="Город"/></td>
-                <td><apex:inputText id="BillingCity" size="30" value="{!offer.BillingCity__c}"/></td>
+                <td><apex:input id="BillingCity" size="30" value="{!BillingCityStr}"/></td>
             </tr>
 
             <tr>
                 <td><apex:outputLabel for="BillingAddress" value="Адрес"/></td>
-                <td><apex:inputText id="BillingAddress" size="30" value="{!offer.BillingAddress__c}"/></td>
+                <td><apex:input id="BillingAddress" size="30" value="{!BillingAddressStr}"/></td>
             </tr>
 
             <tr>
                 <td><apex:outputLabel for="SignerName" value="Имя подписанта в именительном падеже"/></td>
-                <td><apex:inputText id="SignerName" disabled="true" size="30" value="{!offer.SignerName__c}"/></td>
+                <td><apex:inputText id="SignerName" size="30" value="{!SignerName}"/></td>
             </tr>
 
             <tr>
                 <td><apex:outputLabel for="SignerPosition" value="Должность подписанта"/></td>
-                <td><apex:inputText id="SignerPosition" disabled="true" size="30" value="{!offer.SignerPosition__c}"/></td>
+                <td><apex:inputText id="SignerPosition" size="30" value="{!SignerPosition}"/></td>
             </tr>
+
+            <div align="center">
+                <input id="agree" name="agree" type="checkbox" value="1" required="required"/>Подтверждаю свое ознакомление и соглашаюсь с условиями <span class="blue-text">Оферты на оказание услуг "Яндекс.Еда"</span><br/>
+            </div>
+
+            <apex:commandButton action="{!save}" value="Отправить"
+                                id="theButton"/>
+
+            <div align="center">
+                <td>© 2019 Яндекс</td>
+            </div>
         </table>
-
-        <div align="center">
-        <input id="agree" name="agree" type="checkbox" value="1"/>Подтверждаю свое ознакомление и соглашаюсь с условиями <span class="blue-text">Оферты на оказание услуг "Яндекс.Еда"</span><br/>
-        </div>
-
-        <div align="center">
-                <td>
-                    <input type="submit" name="Отправить"
-                           style="width:120px; height:28px; border:1px solid lightgrey; background:#ffe033;"/>
-                </td>
-        </div>
-
-        <div align="center">
-            <td>© 2019 Яндекс</td>
-        </div>
     </apex:form>
 </apex:page>

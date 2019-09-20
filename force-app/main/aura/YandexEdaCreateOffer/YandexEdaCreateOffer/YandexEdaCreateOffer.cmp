@@ -1,0 +1,70 @@
+<!--
+ - Created by user on 20.09.2019.
+ -->
+
+<aura:component description="YandexEdaCreateOffer"
+                implements="force:lightningQuickActionWithoutHeader, force:hasRecordId"
+                controller="YandexEdaCreateOfferController">
+    <!-- attributes -->
+    <!-- <aura:attribute name="tableRows" type="Contact[]"/>-->
+    <aura:attribute name="createConfirm" type="Boolean"/>
+    <aura:attribute name="createError" type="Boolean"/>
+
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="selectedRowsCount" type="Integer" default="0"/>
+    <aura:attribute name="maxRowSelection" type="Integer" default="1"/>
+
+    <!-- handlers-->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+
+    <!-- the container element determine the height of the datatable -->
+    <div class="slds-col modal-header slds-modal__header">
+        <h2 class="title slds-text-heading--medium">Создать оферту</h2>
+    </div>
+    <div class="slds-col modal-body slds-p-around--medium"
+         style="height: 200px; max-height: 400px; overflow-y: auto !important">
+        <!-- таблица -->
+        <div style="height: 300px">
+            <h1 align="center">Выберите контакт, которому необходимо отправить оферту</h1>
+            <lightning:datatable
+                    columns="{! v.columns }"
+                    data="{! v.data }"
+                    keyField="id"
+                    maxRowSelection="{! v.maxRowSelection }"
+                    onrowselection="{! c.updateSelectedText }"/>
+        </div>
+
+    </div>
+
+    <aura:if isTrue="{!v.createConfirm}">
+        <ui:message title="Успех" severity="confirm" closable="true">
+            Оферта успешно отправлена контакту
+        </ui:message>
+    </aura:if>
+
+    <aura:if isTrue="{!v.createError}">
+        <ui:message title="Ошибка" severity="error" closable="true">
+            Оферта для текущей организации уже была создана
+        </ui:message>
+    </aura:if>
+
+    <div class="slds-col modal-footer slds-modal__footer">
+        <lightning:button variant="neutral" label="Отправить Оферту" onclick="{! c.createOfferJS }"/>
+        <lightning:button variant="brand" label="Отмена" onclick="{! c.cancelClick }"/>
+    </div>
+    <aura:html tag="style">
+        .cuf-content {
+        padding: 0 0rem !important;
+        }
+        .slds-p-around--medium {
+        padding: 0rem !important;
+        }
+        .slds-modal__content{
+        overflow-y:hidden !important;
+        height:unset !important;
+        max-height:unset !important;
+        }
+    </aura:html>
+</aura:component>

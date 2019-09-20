@@ -52,7 +52,7 @@
     <enableSearch>false</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <label>AccountProfile</label>
+    <label>Организация Анкеты</label>
     <nameField>
         <label>AccountProfile Name</label>
         <type>Text</type>

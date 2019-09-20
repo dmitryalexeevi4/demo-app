@@ -51,6 +51,16 @@
     <custom>true</custom>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Account.AccountOffer__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.AccountProfile__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Account.AccountingEmail__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -196,6 +206,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>AccountProfile__c.OrgProfile__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>AccountProfile__c.PosSystem__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -317,6 +332,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Offer__c.OGRN__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Offer__c.OfferContact__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -472,6 +492,10 @@
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
+        <apexPage>Thanks</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>Unauthorized</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
@@ -481,7 +505,7 @@
     </pageAccesses>
     <pageAccesses>
         <apexPage>YandexEdaOffer</apexPage>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
         <apexPage>YandexEdaProfile</apexPage>

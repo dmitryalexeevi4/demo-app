@@ -17,7 +17,7 @@
     <genericErrorPage>Exception</genericErrorPage>
     <inMaintenancePage>InMaintenance</inMaintenancePage>
     <inactiveIndexPage>InMaintenance</inactiveIndexPage>
-    <indexPage>partner</indexPage>
+    <indexPage>YandexEdaOffer</indexPage>
     <masterLabel>Web-to-lead (Partner)</masterLabel>
     <referrerPolicyOriginWhenCrossOrigin>true</referrerPolicyOriginWhenCrossOrigin>
     <requireHttps>true</requireHttps>
@@ -26,5 +26,5 @@
     <siteTemplate>SiteTemplate</siteTemplate>
     <siteType>Visualforce</siteType>
     <subdomain>mydomain-developer-edition</subdomain>
-    <urlPathPrefix>partner</urlPathPrefix>
+    <urlPathPrefix>yandexoffer</urlPathPrefix>
 </CustomSite>
