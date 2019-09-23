@@ -4,29 +4,30 @@
 
 public with sharing class YandexEdaOfferController {
     public Offer__c offer {get;set;}
+    public Boolean coincidesLegal {get;set;}
 
-    public String RestName {get;set;}
-    public String AccountFullName {get;set;}
-    public String City {get;set;}
-    public String Index {get;set;}
-    public String Street {get;set;}
-    public String Apartments {get;set;}
-    public String OGRN {get;set;}
-    public String INN {get;set;}
-    public String KPP {get;set;}
-    public String NDS {get;set;}
-    public String BankName {get;set;}
-    public String BankBIK {get;set;}
-    public String CorAcc {get;set;}
-    public String CheckingAcc {get;set;}
-    public String Accounting_Phone {get;set;}
-    public String AccountingEmail {get;set;}
-    public String Website {get;set;}
-    public String BillingIndexStr {get;set;}
-    public String BillingCityStr {get;set;}
-    public String BillingAddressStr {get;set;}
-    public String SignerName {get;set;}
-    public String SignerPosition {get;set;}
+    public String sRestName {get;set;}
+    public String sAccountFullName {get;set;}
+    public String sCity {get;set;}
+    public String sIndex {get;set;}
+    public String sStreet {get;set;}
+    public String sApartments {get;set;}
+    public String sOGRN {get;set;}
+    public String sINN {get;set;}
+    public String sKPP {get;set;}
+    public String sNDS {get;set;}
+    public String sBankName {get;set;}
+    public String sBankBIK {get;set;}
+    public String sCorAcc {get;set;}
+    public String sCheckingAcc {get;set;}
+    public String sAccounting_Phone {get;set;}
+    public String sAccountingEmail {get;set;}
+    public String sWebsite {get;set;}
+    public String sBillingIndex {get;set;}
+    public String sBillingCity {get;set;}
+    public String sBillingAddress {get;set;}
+    public String sSignerName {get;set;}
+    public String sSignerPosition {get;set;}
 
 
     public YandexEdaOfferController() {
@@ -47,28 +48,28 @@ public with sharing class YandexEdaOfferController {
                 FROM Offer__c
                 WHERE Id = :account.AccountOffer__c
         ];
-        RestName = offer.RestName__c;
-        AccountFullName = offer.AccountFullName__c;
-        City = offer.City__c;
-        Index = offer.Index__c;
-        Street = offer.Street__c;
-        Apartments = offer.Apartments__c;
-        OGRN = offer.OGRN__c;
-        INN = offer.INN__c;
-        KPP = offer.KPP__c;
-        NDS = offer.NDS__c;
-        BankName = offer.BankName__c;
-        BankBIK = offer.BankBIK__c;
-        CorAcc = offer.CorAcc__c;
-        CheckingAcc = offer.CheckingAcc__c;
-        Accounting_Phone = offer.Accounting_Phone__c;
-        AccountingEmail = offer.AccountingEmail__c;
-        Website = offer.Website__c;
-        BillingIndexStr = offer.BillingIndex__c;
-        BillingCityStr = offer.BillingCity__c;
-        BillingAddressStr = offer.BillingAddress__c;
-        SignerName = offer.SignerName__c;
-        SignerPosition = offer.SignerPosition__c;
+        sRestName = offer.RestName__c;
+        sAccountFullName = offer.AccountFullName__c;
+        sCity = offer.City__c;
+        sIndex = offer.Index__c;
+        sStreet = offer.Street__c;
+        sApartments = offer.Apartments__c;
+        sOGRN = offer.OGRN__c;
+        sINN = offer.INN__c;
+        sKPP = offer.KPP__c;
+        sNDS = offer.NDS__c;
+        sBankName = offer.BankName__c;
+        sBankBIK = offer.BankBIK__c;
+        sCorAcc = offer.CorAcc__c;
+        sCheckingAcc = offer.CheckingAcc__c;
+        sAccounting_Phone = offer.Accounting_Phone__c;
+        sAccountingEmail = offer.AccountingEmail__c;
+        sWebsite = offer.Website__c;
+        sBillingIndex = offer.BillingIndex__c;
+        sBillingCity = offer.BillingCity__c;
+        sBillingAddress = offer.BillingAddress__c;
+        sSignerName = offer.SignerName__c;
+        sSignerPosition = offer.SignerPosition__c;
     }
 
     public List<SelectOption> getTypes() {
@@ -85,28 +86,28 @@ public with sharing class YandexEdaOfferController {
     }
 
     public PageReference save() {
-        offer.AccountFullName__c = AccountFullName;
-        offer.RestName__c = RestName;
-        offer.City__c = City;
-        offer.Index__c = Index;
-        offer.Street__c = Street;
-        offer.Apartments__c = Apartments;
-        offer.OGRN__c = OGRN;
-        offer.INN__c = INN;
-        offer.KPP__c = KPP;
-        offer.NDS__c = NDS;
-        offer.BankName__c = BankName;
-        offer.BankBIK__c = BankBIK;
-        offer.CorAcc__c = CorAcc;
-        offer.CheckingAcc__c = CheckingAcc;
-        offer.Accounting_Phone__c = Accounting_Phone;
-        offer.AccountingEmail__c = AccountingEmail;
-        offer.Website__c = Website;
-        offer.BillingIndex__c = BillingIndexStr;
-        offer.BillingCity__c = BillingCityStr;
-        offer.BillingAddress__c = BillingAddressStr;
-        offer.SignerName__c = SignerName;
-        offer.SignerPosition__c = SignerPosition;
+        offer.AccountFullName__c = sAccountFullName;
+        offer.RestName__c = sRestName;
+        offer.City__c = sCity;
+        offer.Index__c = sIndex;
+        offer.Street__c = sStreet;
+        offer.Apartments__c = sApartments;
+        offer.OGRN__c = sOGRN;
+        offer.INN__c = sINN;
+        offer.KPP__c = sKPP;
+        offer.NDS__c = sNDS;
+        offer.BankName__c = sBankName;
+        offer.BankBIK__c = sBankBIK;
+        offer.CorAcc__c = sCorAcc;
+        offer.CheckingAcc__c = sCheckingAcc;
+        offer.Accounting_Phone__c = sAccounting_Phone;
+        offer.AccountingEmail__c = sAccountingEmail;
+        offer.Website__c = sWebsite;
+        offer.BillingIndex__c = sBillingIndex;
+        offer.BillingCity__c = sBillingCity;
+        offer.BillingAddress__c = sBillingAddress;
+        offer.SignerName__c = sSignerName;
+        offer.SignerPosition__c = sSignerPosition;
 
         update offer;
         return null;
