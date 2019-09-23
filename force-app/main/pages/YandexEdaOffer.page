@@ -15,6 +15,10 @@
             color: blue;
         }
 
+        .error {
+            outline: 1px solid red;
+        }
+
         .disabled {
             pointer-events:none;
             color:grey;
@@ -23,7 +27,88 @@
     </style>
 
     <script>
-      $(document).ready(function(){
+      function validation() {
+        if ($('input[id*=RestName]').val() == "" || $('input[id*=Accounting_Phone]').val() == ""
+          || $('input[id*=AccountingEmail]').val() == "" || $('input[id*=BillingAddress]').val() == ""
+          || $('input[id*=BillingCity]').val() == "" ||$('input[id*=BillingIndex]').val() == "") {
+          document.getElementById("message").innerText = "Заполните недостающие поля";
+        }
+      }
+
+      $(document).ready(function() {
+        $("input[id*=RestName]").blur(function() {
+          var rest_name = $("input[id*=RestName]").val();
+          var pattern = /^(?:[a-zA-Z\s]+)|(?:[а-яА-Я\s]+)$/;
+          if (!pattern.test(rest_name)) {
+            $(this).addClass("error");
+            document.getElementById("message").innerText = "Некорректно указано название ресторана";
+          } else {
+            $(this).removeClass("error");
+            document.getElementById("message").innerText = "";
+          }
+        });
+
+        $("#phone").mask("+7 (999) 999-99-99");
+
+        $("input[id*=Accounting_Phone]").blur(function() {
+          var acc_phone = $("input[id*=Accounting_Phone]").val();
+          var pattern = /^+[\d]{1}\ \([\d]{2,3}\)\ [\d]{2,3}-[\d]{2,3}-[\d]{2,3}$/;
+          if (!pattern.test(acc_phone)) {
+            $(this).addClass("error");
+            document.getElementById("message").innerText = "Некорректно указан номер телефона";
+          } else {
+            $(this).removeClass("error");
+            document.getElementById("message").innerText = "";
+          }
+        });
+
+        $("input[id*=AccountingEmail]").blur(function() {
+          var acc_email = $("input[id*=AccountingEmail]").val();
+          var pattern = /^(?:[a-zA-Z\s]+)|(?:[а-яА-Я\s]+)$/;
+          if (!pattern.test(acc_email)) {
+            $(this).addClass("error");
+            document.getElementById("message").innerText = "Некорректно указан адрес почты";
+          } else {
+            $(this).removeClass("error");
+            document.getElementById("message").innerText = "";
+          }
+        });
+
+        $("input[id*=BillingAddress]").blur(function() {
+          var addr = $("input[id*=BillingAddress]").val();
+          var pattern = /^(?:[а-яА-Я\s]+)$/
+          if (!pattern.test(addr)) {
+            $(this).addClass("error");
+            document.getElementById("message").innerText = "Некорректно указан адрес";
+          } else {
+            $(this).removeClass("error");
+            document.getElementById("message").innerText = "";
+          }
+        });
+
+        $("input[id*=BillingCity]").blur(function() {
+          var city = $("input[id*=BillingCity]").val();
+          var pattern = /^(?:[а-яА-Я\s]+)$/
+          if (!pattern.test(city)) {
+            $(this).addClass("error");
+            document.getElementById("message").innerText = "Некорректно указан город";
+          } else {
+            $(this).removeClass("error");
+            document.getElementById("message").innerText = "";
+          }
+        });
+
+        $("input[id*=BillingIndex]").blur(function() {
+          var index = $("input[id*=BillingIndex]").val();
+          var pattern = /[0-9]/;
+          if (!pattern.test(index)) {
+            $(this).addClass("error");
+            document.getElementById("message").innerText = "Некорректно указан индекс";
+          } else {
+            $(this).removeClass("error");
+            document.getElementById("message").innerText = "";
+          }
+        });
 
         $("input[id*=OrgINN]").suggestions({
           token: "da8497f9ba5361d4e80a8c72458d732875c0a0fc",
@@ -56,21 +141,34 @@
         });
 
         $("[id*=CoincidesLegal]").click(function() {
-          if  ($("[id*=CoincidesLegal]").prop("checked") === true) {
+          if ($("[id*=CoincidesLegal]").prop("checked") === true) {
             $("input[id*=BillingCity]").val($("input[id*=add_city]").val());
             $("input[id*=BillingIndex]").val($("input[id*=add_index]").val());
             $("input[id*=BillingAddress]").val(
               $("input[id*=add_street]").val() + ", " +
               $("input[id*=add_apartments]").val()
             );
-          }else{
-            if  ($("[id*=CoincidesLegal]").prop("checked") === false) {
+          } else {
+            if ($("[id*=CoincidesLegal]").prop("checked") === false) {
               $("input[id*=BillingCity]").val("").val();
               $("input[id*=BillingIndex]").val("").val();
               $("input[id*=BillingAddress]").val("");
             }
           }
         });
+
+        $(function(){
+          $("input[id*=Accounting_Phone]").mask("+7 (999) 999-99-99")
+        });
+
+        $(function(){
+          $("input[id*=CheckingAcc]").mask("99999999999999999999")
+        });
+
+        $(function(){
+          $("input[id*=BillingIndex]").mask("999999")
+        });
+
       });
 
       </script>
@@ -142,6 +240,8 @@
                 </td>
             </tr>
         </table>
+
+        <div id="message" style="color: red; text-align: center">&nbsp;</div>
 
         <table class="offer_fields" align="center">
 
@@ -295,7 +395,7 @@
             </tr>
 
             <tr>
-                <td align="center"><apex:commandButton id="button" value="Отправить" action="{!save}"/></td>
+                <td align="center"><apex:commandButton id="button" value="Отправить" action="{!save}" onClick="validation()"/></td>
             </tr>
 
             <tr>
