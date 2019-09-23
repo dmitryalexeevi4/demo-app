@@ -28,9 +28,14 @@
 
     <script>
       function validation() {
-        if ($('input[id*=RestName]').val() == "" || $('input[id*=Accounting_Phone]').val() == ""
-          || $('input[id*=AccountingEmail]').val() == "" || $('input[id*=BillingAddress]').val() == ""
-          || $('input[id*=BillingCity]').val() == "" ||$('input[id*=BillingIndex]').val() == "") {
+        if ($('input[id*=RestName]').val() == ""
+          || $('input[id*=CheckingAcc]').val() == ""
+          || $('input[id*=Accounting_Phone]').val() == ""
+          || $('input[id*=AccountingEmail]').val() == ""
+          || $('input[id*=Website]').val() == ""
+          || $('input[id*=BillingIndex]').val() == ""
+          || $('input[id*=BillingCity]').val() == ""
+          || $('input[id*=BillingAddress]').val() == "") {
           document.getElementById("message").innerText = "Заполните недостающие поля";
         }
       }
@@ -52,7 +57,7 @@
 
         $("input[id*=Accounting_Phone]").blur(function() {
           var acc_phone = $("input[id*=Accounting_Phone]").val();
-          var pattern = /^+[\d]{1}\ \([\d]{2,3}\)\ [\d]{2,3}-[\d]{2,3}-[\d]{2,3}$/;
+          var pattern = /^((\+?7|8)[ \-] ?)?((\(\d{3}\))|(\d{3}))?([ \-])?(\d{3}[\- ]?\d{2}[\- ]?\d{2})$/;
           if (!pattern.test(acc_phone)) {
             $(this).addClass("error");
             document.getElementById("message").innerText = "Некорректно указан номер телефона";
@@ -64,22 +69,46 @@
 
         $("input[id*=AccountingEmail]").blur(function() {
           var acc_email = $("input[id*=AccountingEmail]").val();
-          var pattern = /^(?:[a-zA-Z\s]+)|(?:[а-яА-Я\s]+)$/;
+          var pattern = /^[a-z0-9_-]+@+[a-z0-9-]+\.[a-z]{2,6}$/i;
           if (!pattern.test(acc_email)) {
             $(this).addClass("error");
-            document.getElementById("message").innerText = "Некорректно указан адрес почты";
+            document.getElementById("message").innerText = "Некорректно указан адрес электронной почты";
           } else {
             $(this).removeClass("error");
             document.getElementById("message").innerText = "";
           }
         });
 
-        $("input[id*=BillingAddress]").blur(function() {
-          var addr = $("input[id*=BillingAddress]").val();
-          var pattern = /^(?:[а-яА-Я\s]+)$/
-          if (!pattern.test(addr)) {
+        $("input[id*=Website]").blur(function() {
+          var web = $("input[id*=Website]").val();
+          var pattern = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
+          if (!pattern.test(web)) {
             $(this).addClass("error");
-            document.getElementById("message").innerText = "Некорректно указан адрес";
+            document.getElementById("message").innerText = "Некорректно указан адрес сайта";
+          } else {
+            $(this).removeClass("error");
+            document.getElementById("message").innerText = "";
+          }
+        });
+
+        $("input[id*=CheckingAcc]").blur(function() {
+          var ch_acc = $("input[id*=CheckingAcc]").val();
+          var pattern = /^\d{20}$/;
+          if (!pattern.test(ch_acc)) {
+            $(this).addClass("error");
+            document.getElementById("message").innerText = "Некорректно указан расчетный счет";
+          } else {
+            $(this).removeClass("error");
+            document.getElementById("message").innerText = "";
+          }
+        });
+
+        $("input[id*=BillingIndex]").blur(function() {
+          var index = $("input[id*=BillingIndex]").val();
+          var pattern = /^\d{6}$/;
+          if (!pattern.test(index)) {
+            $(this).addClass("error");
+            document.getElementById("message").innerText = "Некорректно указан индекс";
           } else {
             $(this).removeClass("error");
             document.getElementById("message").innerText = "";
@@ -98,12 +127,12 @@
           }
         });
 
-        $("input[id*=BillingIndex]").blur(function() {
-          var index = $("input[id*=BillingIndex]").val();
-          var pattern = /[0-9]/;
-          if (!pattern.test(index)) {
+        $("input[id*=BillingAddress]").blur(function() {
+          var addr = $("input[id*=BillingAddress]").val();
+          var pattern = /^(.+)\s+(\S+)(-(\d+))?$/
+          if (!pattern.test(addr)) {
             $(this).addClass("error");
-            document.getElementById("message").innerText = "Некорректно указан индекс";
+            document.getElementById("message").innerText = "Некорректно указан адрес";
           } else {
             $(this).removeClass("error");
             document.getElementById("message").innerText = "";

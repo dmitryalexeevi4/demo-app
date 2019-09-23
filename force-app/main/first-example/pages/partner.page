@@ -74,7 +74,7 @@
 
             $("input[name='phone']").blur(function() {
               var phone = $("#phone").val();
-              var pattern = /^+[\d]{1}\ \([\d]{2,3}\)\ [\d]{2,3}-[\d]{2,3}-[\d]{2,3}$/;
+              var pattern = /^((\+?7|8)[ \-] ?)?((\(\d{3}\))|(\d{3}))?([ \-])?(\d{3}[\- ]?\d{2}[\- ]?\d{2})$/;
               if (!pattern.test(phone)) {
                 $(this).addClass("error");
                 document.getElementById("message").innerText = "Некорректно указан телефон";
@@ -125,7 +125,7 @@
             // Адрес
             $("input[name='00N4E000004VZoa']").blur(function() {
               var address = $("#00N4E000004VZoa").val();
-              var pattern = /^(?:[а-яА-Я\s]+)$/
+              var pattern = /^(.+)\s+(\S+)(-(\d+))?$/;
               if (!pattern.test(address)) {
                 $(this).addClass("error");
                 document.getElementById("message").innerText = "Некорректно указан адрес";
